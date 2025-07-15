@@ -1,0 +1,13 @@
+{
+  "name": "custom-klaviyo-event",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "vercel dev"
+  },
+  "dependencies": {
+    "@upstash/redis": "^1.22.0",
+    "node-fetch": "^2.6.7"
+  }
+} 
