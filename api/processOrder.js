@@ -38,7 +38,14 @@ async function sendKlaviyoEvent(email, order_id, parcels) {
 module.exports = async (req, res) => {
   // Find all orders due for processing
   const now = Date.now();
-  const dueOrders = await redis.zrangebyscore('pending_orders', 0, now);
+  let dueOrders = [];
+  try {
+    dueOrders = await redis.zrangebyscore('pending_orders', 0, now);
+  } catch (err) {
+    console.error('Redis zrangebyscore error:', err);
+    res.status(500).json({ error: 'Redis zrangebyscore error', details: err.message });
+    return;
+  }
   for (const orderStr of dueOrders) {
     const { order_id, customer_email } = JSON.parse(orderStr);
     try {
