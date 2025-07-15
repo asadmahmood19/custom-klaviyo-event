@@ -1,0 +1,8 @@
+{
+  "crons": [
+    {
+      "path": "/api/processOrder",
+      "schedule": "*/5 * * * *"
+    }
+  ]
+} 
