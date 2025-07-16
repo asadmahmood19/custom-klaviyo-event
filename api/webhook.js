@@ -6,6 +6,7 @@ const redis = new Redis({
 });
 
 module.exports = async (req, res) => {
+  console.log('Webhook received' , req.body);
   if (req.method !== 'POST') {
     res.status(405).json({ error: 'Method not allowed' });
     return;
